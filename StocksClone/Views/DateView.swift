@@ -23,7 +23,6 @@ struct DateView: View {
                 .foregroundColor(.gray)
                 .fontWeight(.bold)
                 .padding(.leading, 20)
-                .padding(.top, 20)
                 .frame(alignment: .leading)
             
             Spacer()

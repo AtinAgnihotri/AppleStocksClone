@@ -11,7 +11,7 @@ import SwiftUI
 struct StocksCloneApp: App {
     var body: some Scene {
         WindowGroup {
-            StocksListView()
+            MainView()
         }
     }
 }
