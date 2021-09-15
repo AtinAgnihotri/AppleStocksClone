@@ -13,6 +13,7 @@
 		85D8BAF826E9BF5000D1512B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85D8BAF726E9BF5000D1512B /* Preview Assets.xcassets */; };
 		85D8BB0426E9C8DD00D1512B /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D8BB0326E9C8DD00D1512B /* Stock.swift */; };
 		85D8BB0626E9C94E00D1512B /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D8BB0526E9C94E00D1512B /* News.swift */; };
+		85D8BB0926EA149800D1512B /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D8BB0826EA149800D1512B /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		85D8BAF926E9BF5000D1512B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85D8BB0326E9C8DD00D1512B /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		85D8BB0526E9C94E00D1512B /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		85D8BB0826EA149800D1512B /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		85D8BAEF26E9BF4C00D1512B /* StocksClone */ = {
 			isa = PBXGroup;
 			children = (
+				85D8BB0726EA148600D1512B /* Services */,
 				85D8BB0226E9C8CF00D1512B /* Models */,
 				85D8BAF026E9BF4C00D1512B /* StocksCloneApp.swift */,
 				85D8BAF226E9BF4C00D1512B /* ContentView.swift */,
@@ -81,6 +84,14 @@
 				85D8BB0526E9C94E00D1512B /* News.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		85D8BB0726EA148600D1512B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				85D8BB0826EA149800D1512B /* WebService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 				85D8BAF326E9BF4C00D1512B /* ContentView.swift in Sources */,
 				85D8BAF126E9BF4C00D1512B /* StocksCloneApp.swift in Sources */,
 				85D8BB0626E9C94E00D1512B /* News.swift in Sources */,
+				85D8BB0926EA149800D1512B /* WebService.swift in Sources */,
 				85D8BB0426E9C8DD00D1512B /* Stock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
