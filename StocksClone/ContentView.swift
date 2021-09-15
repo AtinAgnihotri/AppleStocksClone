@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var vm = StocksListViewModel()
     var body: some View {
         Text("Hello, world!")
             .padding()
+            .onAppear(perform: {
+                print("DL Start")
+                vm.load()
+            })
     }
 }
 
