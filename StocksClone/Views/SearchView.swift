@@ -31,8 +31,7 @@ struct SearchView: View {
 }
 
 struct SearchView_Previews: PreviewProvider {
-    @State static var searchTerm = ""
     static var previews: some View {
-        SearchView(searchTerm: $searchTerm)
+        SearchView(searchTerm: .constant(""))
     }
 }

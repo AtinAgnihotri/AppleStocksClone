@@ -8,23 +8,45 @@
 import SwiftUI
 
 struct StocksListView: View {
-    @State var vm = StocksListViewModel()
+    @State private var stocksListVM = StocksListViewModel()
+    
+    init() {
+        let titleAttrs: [NSAttributedString.Key : Any] = [.foregroundColor: UIColor.white]
+        let backgroundColor: UIColor = .black
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = titleAttrs
+            navBarAppearance.largeTitleTextAttributes = titleAttrs
+            navBarAppearance.backgroundColor = backgroundColor
+                    
+            UINavigationBar.appearance().standardAppearance = navBarAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        } else {
+//            UINavigationBar.appearance().barTintColor = backgroundColor
+            UINavigationBar.appearance().largeTitleTextAttributes = titleAttrs
+            UINavigationBar.appearance().titleTextAttributes = titleAttrs
+        }
+        
+        UITableView.appearance().backgroundColor = .black
+    }
+    
     var body: some View {
         NavigationView {
             
             ZStack(alignment: .leading) {
                 Color.black
+                    .edgesIgnoringSafeArea(.all)
                 
-                VStack (){
-                    Text("Sep 15, 2021")
-                        .font(.system(size: 32))
-                        .foregroundColor(.gray)
-                        .fontWeight(.bold)
-                        .padding(.leading, 20)
-                        .padding(.top, 20)
+                VStack {
+                    
+                    DateView()
+                    
+                    SearchView(searchTerm: $stocksListVM.searchTerm)
+                    
                     Spacer()
                 
-                }
+                }.frame(alignment: .leading)
             }
             .navigationBarTitle("Stocks")
         }
