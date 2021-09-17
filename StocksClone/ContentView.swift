@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject private var stocksListVM = StocksListViewModel()
     
-    private var noFilteredStocks: Bool {
-        stocksListVM.filteredStocks.isEmpty
+    var screenSize: CGSize {
+        UIScreen.main.bounds.size
     }
     
     init() {
@@ -21,17 +21,30 @@ struct ContentView: View {
     
     var body: some View {
         return NavigationView {
-            ZStack(alignment: .leading) {
+//            ZStack(alignment: .leading) {
+            ZStack {
                 Color.black
-                    .edgesIgnoringSafeArea(.all)
-                VStack {
+                VStack (alignment: .leading){
                     DateView()
                     SearchView(searchTerm: $stocksListVM.searchTerm)
                     StocksListView(stocks: stocksListVM.filteredStocks)
-                    Spacer()
-                }.frame(alignment: .leading)
-            }
-            .navigationBarTitle("Stocks")
+                }
+
+                NewsArticleView(articles: stocksListVM.news,
+                                onDragBegan: { value in
+                                    self.stocksListVM.dragOffset = value.translation
+                                },
+                                onDragEnd: { value in
+                                    if value.translation.height < 0 {
+                                        stocksListVM.dragOffset = CGSize(width: 0, height: 100)
+                                    } else {
+                                        stocksListVM.dragOffset = CGSize(width: 0, height: screenSize.height * 0.67)
+                                    }
+                                })
+                    .animation(.spring())
+                    .offset(y: stocksListVM.dragOffset.height)
+
+            }.navigationBarTitle("Stocks")
         }
     }
 }

@@ -35,7 +35,7 @@ class WebService {
         load(for: STOCKS_URL, completion: completion)
     }
     
-    func getTopNews(completion: @escaping (Result<[News]?, NetworkError>) -> Void) {
+    func getTopNews(completion: @escaping (Result<[NewsArticle]?, NetworkError>) -> Void) {
         load(for: TOP_NEWS_URL, completion: completion)
     }
     
