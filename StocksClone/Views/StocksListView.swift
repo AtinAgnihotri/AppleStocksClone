@@ -10,13 +10,20 @@ import SwiftUI
 struct StocksListView: View {
     let stocks: [StockViewModel]
     
+    private var noStocks: Bool {
+        stocks.isEmpty
+    }
+    
     var body: some View {
-        List {
+        print("Stocks List Redrawn with \(stocks)")
+        
+        return List {
             ForEach (stocks, id:\.symbol){ stock in
                 StockCellView(stock: stock)
                     .disabled(true)
             }
         }
+        .animation(noStocks ? nil : .default)
     }
 }
 

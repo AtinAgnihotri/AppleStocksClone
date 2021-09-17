@@ -38,19 +38,11 @@ struct StockCellView: View {
                 .padding(.vertical, 2)
                 .background(changeColor)
                 .cornerRadius(5)
-//                Text(stock.change)
-//                    .
-
             }
         }
         .foregroundColor(.white)
-//        .padding(5)
         .cornerRadius(10)
         .listRowBackground(Color.black)
-        
-//        Text("Hello World")
-            
-//        .background(Color(.tertiarySystemBackground))
     }
 }
 

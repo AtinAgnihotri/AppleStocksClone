@@ -14,13 +14,10 @@ struct SearchView: View {
     var body: some View {
         HStack {
             Spacer()
-            
             Image(systemName: "magnifyingglass")
-            
             TextField("Search", text: self.$searchTerm)
                 .foregroundColor(.primary)
                 .padding(10)
-            
             Spacer()
         }
         .foregroundColor(.secondary)

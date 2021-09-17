@@ -7,41 +7,37 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct ContentView: View {
     @ObservedObject private var stocksListVM = StocksListViewModel()
+    
+    private var noFilteredStocks: Bool {
+        stocksListVM.filteredStocks.isEmpty
+    }
     
     init() {
         UIAppearanceUtil.shared.setupBaseAppearance()
+        stocksListVM.load()
     }
     
     var body: some View {
-        NavigationView {
-            
+        return NavigationView {
             ZStack(alignment: .leading) {
                 Color.black
                     .edgesIgnoringSafeArea(.all)
-                
                 VStack {
-                    
                     DateView()
-                    
                     SearchView(searchTerm: $stocksListVM.searchTerm)
-                    
-                    StocksListView(stocks: stocksListVM.stocks)
-                    
+                    StocksListView(stocks: stocksListVM.filteredStocks)
                     Spacer()
-                
                 }.frame(alignment: .leading)
             }
             .navigationBarTitle("Stocks")
-        }.onAppear {
-            stocksListVM.load()
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        ContentView()
     }
 }

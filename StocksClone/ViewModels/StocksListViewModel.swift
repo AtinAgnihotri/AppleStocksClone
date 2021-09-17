@@ -9,12 +9,18 @@ import Foundation
 
 class StocksListViewModel: ObservableObject {
     
-    @Published var searchTerm: String = ""
-    @Published var stocks: [StockViewModel] = [StockViewModel]() {
+    @Published var searchTerm: String = "" {
         didSet {
-            print(stocks)
+            setFilteredStocks()
         }
     }
+    @Published var stocks: [StockViewModel] = [StockViewModel]() {
+        didSet {
+            setFilteredStocks()
+        }
+    }
+    @Published var filteredStocks: [StockViewModel] = [StockViewModel]()
+    
     
     func load() {
         fetchStocks()
@@ -24,6 +30,7 @@ class StocksListViewModel: ObservableObject {
         let service = WebService()
         service.getStocks { [weak self] result in
             DispatchQueue.main.async {
+                print("result, \(result)")
                 switch result {
                 case .success(let stockList):
                     if let stockList = stockList {
@@ -34,6 +41,10 @@ class StocksListViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    private func setFilteredStocks() {
+        filteredStocks = searchTerm.isEmpty ? stocks : stocks.filter { $0.symbol.lowercased().starts(with: searchTerm.lowercased()) }
     }
     
 }
