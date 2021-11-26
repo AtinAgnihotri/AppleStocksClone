@@ -21,7 +21,6 @@ struct ContentView: View {
     
     var body: some View {
         return NavigationView {
-//            ZStack(alignment: .leading) {
             ZStack {
                 Color.black
                 VStack (alignment: .leading){
